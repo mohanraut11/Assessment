@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Exercises</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        /* Task 1: Box with Different Borders */
+        .box1 {
+            width: 250px;
+            height: 100px;
+            border: 5px solid red;
+            background-color: #ffebee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Task 2: Box with Padding */
+        .box2 {
+            width: 250px;
+            height: 100px;
+            padding: 20px;
+            background-color: lightblue;
+            border: 2px solid blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        /* Task 3: Box with Margin */
+        .box3 {
+            width: 250px;
+            height: 100px;
+            margin: 30px;
+            background-color: lightgreen;
+            border: 2px solid green;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        /* Task 4: Box-sizing border-box */
+        .box4 {
+            width: 250px;
+            height: 100px;
+            padding: 20px;
+            border: 5px solid black;
+            box-sizing: border-box;
+            background-color: lightyellow;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Task 5: Compact Order Card */
+        .card {
+            background-color: #fff;
+            width: 180px; /* Reduced Width */
+            padding: 12px 12px 12px 20px; /* Adjusted Padding */
+            border-radius: 8px;
+            text-align: left; /* Align text to left */
+            border-left: 4px solid grey; /* Grey Line on the Left */
+            box-shadow: -3px 0 6px rgba(128, 128, 128, 0.4); /* Left-Side Shadow */
+        }
+        .order-number {
+            font-size: 16px; /* Adjusted Size */
+            font-weight: bold;
+            margin: 0;
+        }
+        .customer-name {
+            font-size: 13px;
+            color: #555;
+            margin: 5px 0;
+        }
+        .order-time {
+            font-size: 11px;
+            color: gray;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Box Model Exercises</h1>
+
+    <div class="container">
+        <h2>1. Box with Different Borders</h2>
+        <div class="box1">Border Example</div>
+
+        <h2>2. Box with Padding</h2>
+        <div class="box2">Padding Example</div>
+
+        <h2>3. Box with Margin</h2>
+        <div class="box3">Margin Example</div>
+
+        <h2>4. Task 4 - Exact Box-sizing: border-box</h2>
+        <div class="box4">Box Sizing Example</div>
+
+        <h2>5. Order Card</h2>
+        <div class="card">
+            <p class="order-number">#2001</p>
+            <p class="customer-name">Ralph Edwards</p>
+            <p class="order-time">Ordered 14 min ago</p>
+        </div>
+    </div>
+
+</body>
+</html>

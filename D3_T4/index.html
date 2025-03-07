@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items - Popular Items</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 30px;
+        }
+        .container {
+            background: #fcfbfa;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.2); /* Left side shadow */
+            max-width: 600px;
+            margin: auto;
+            text-align: left;
+        }
+        h2 {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .grid-item {
+            background: linear-gradient(to right, #e0e0e0, white); /* Left dark gray to white */
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .grid-item h3 {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 10px;
+        }
+        .grid-item p {
+            color: gray;
+            font-size: 14px;
+            margin: 0;
+        }
+        .grid-item span {
+            font-weight: bold;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Popular Items</h2>
+        <div class="grid">
+            <div class="grid-item">
+                <h3>Double Chicken Burger + French Fries</h3>
+                <p>Order: <span>88</span></p>
+            </div>
+            <div class="grid-item">
+                <h3>Mexican Burger</h3>
+                <p>Order: <span>74</span></p>
+            </div>
+            <div class="grid-item">
+                <h3>Double Cheese</h3>
+                <p>Order: <span>56</span></p>
+            </div>
+            <div class="grid-item">
+                <h3>Double Spicy Bean Burger</h3>
+                <p>Order: <span>41</span></p>
+            </div>
+            <div class="grid-item">
+                <h3>Potato Gems</h3>
+                <p>Order: <span>38</span></p>
+            </div>
+            <div class="grid-item">
+                <h3>Beer</h3>
+                <p>Order: <span>32</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

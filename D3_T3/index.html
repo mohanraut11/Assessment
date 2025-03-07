@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seating Layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 30px;
+        }
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: auto;
+        }
+        .seat {
+            width: 60px;
+            height: 50px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid lightgray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .occupied {
+            border: 2px solid red;
+        }
+        .available {
+            border: 2px solid green;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tables available</h2>
+    <p>Green are vacant while red are occupied.</p>
+    
+    <div class="flex-container">
+        <div class="seat occupied">A1</div>
+        <div class="seat">A2</div>
+        <div class="seat occupied">A3</div>
+        <div class="seat">A4</div>
+        <div class="seat available">A5</div>
+        <div class="seat">A6</div>
+        <div class="seat">B1</div>
+        <div class="seat">B2</div>
+        <div class="seat">B3</div>
+        <div class="seat">B4</div>
+        <div class="seat available">B5</div>
+        <div class="seat occupied">B6</div>
+        <div class="seat">C1</div>
+        <div class="seat">C2</div>
+        <div class="seat">C3</div>
+        <div class="seat">C4</div>
+        <div class="seat">C5</div>
+        <div class="seat">C6</div>
+        <div class="seat">C7</div>
+        <div class="seat">D1</div>
+    </div>
+</body>
+</html>
