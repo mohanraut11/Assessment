@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonald's Order Status</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #f5f5f5, #ffe6e6);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .layout-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Top Header */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            padding: 10px;
+        }
+
+        .title-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .title-section img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+
+        .title-section h1 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .fullscreen-box {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #e0e0e0;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+        }
+
+        .header .time {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Main Layout */
+        .main-content {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sidebar {
+            width: 60px;
+            background: #000;
+            padding: 10px;
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .sidebar-footer {
+            width: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-footer .profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .notification-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .notification-box img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        /* Order Sections */
+        .content-sections {
+            flex: 1;
+            display: flex;
+            gap: 20px;
+        }
+
+        .section {
+            flex: 1;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: black;
+        }
+
+        /* Grid Layout for Orders */
+        .items-grid {
+            display: grid;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .items-grid.preparing {
+            grid-template-columns: repeat(5, 1fr); /* 5 boxes per row */
+        }
+
+        .items-grid.ready {
+            grid-template-columns: repeat(3, 1fr); /* 3 boxes per row */
+        }
+
+        .items-grid.ready .item-card:first-child {
+            grid-column: span 3;
+            height: 80px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: green;
+            color: white;
+        }
+
+        .item-card {
+            background: #d3d3d3;
+            border-radius: 5px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .section.ready .items-grid .item-card {
+            background: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout-container">
+        <!-- Top Header -->
+        <div class="top-header">
+            <div class="title-section">
+                <img src="Logo.jpg" alt="Logo">
+                <h1>Order Status</h1>
+            </div>
+            <div class="fullscreen-box">FullScreen</div>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">McDonald's</div>
+            <div class="time"><strong>15:03</strong></div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar-container">
+                <div class="sidebar">
+                    <img src="Customer Display (1).png" alt="Menu">
+                    <img src="Customer Display (2).png" alt="Menu">
+                    <img src="Customer Display.png" alt="Menu">
+                    <img src="Customer Display (2).png" alt="Menu">
+                    <img src="Customer Display (1).png" alt="Menu">
+                </div>
+                <div class="sidebar-footer">
+                    <div class="profile">
+                        <img src="mc donald img.webp" alt="Profile">
+                    </div>
+                    <div class="notification-box">
+                        <img src="bell.jpg" alt="Logo">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Sections -->
+            <div class="content-sections">
+                <!-- Preparing Section -->
+                <div class="section preparing">
+                    <h2>Preparing</h2>
+                    <div class="items-grid preparing">
+                        <!-- 25 Order Boxes (5 per row) -->
+                        <script>
+                            for (let i = 0; i < 25; i++) {
+                                document.write('<div class="item-card">3885</div>');
+                            }
+                        </script>
+                    </div>
+                </div>
+
+                <!-- Ready Section -->
+                <div class="section ready">
+                    <h2>Ready</h2>
+                    <div class="items-grid ready">
+                        <!-- 12 Order Boxes (3 per row) -->
+                        <script>
+                            for (let i = 0; i < 12; i++) {
+                                document.write('<div class="item-card">3885</div>');
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
