@@ -1,142 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>McDonald's Order Board</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f8f8f8;
-            margin: 0;
-        }
-        .container {
-            width: 90%;
-            max-width: 800px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .header-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f0f0f0;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .brand img {
-            width: 30px;
-            height: 30px;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-            margin-top: 10px;
-        }
-        .section {
-            background: white; /* Changed to white */
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-        .section h3 {
-            margin-bottom: 10px;
-        }
-        .orders {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Auto-fit prevents overlap */
-            gap: 15px; /* Increased gap to prevent overlapping */
-        }
-        .order {
-            padding: 10px;
-            background: #ddd;
-            border-radius: 5px;
-            font-weight: bold;
-            text-align: center;
-        }
-        .ready .order {
-            background: green;
-            color: white;
-        }
-        .big-number {
-            background: green;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px auto;
-            text-align: center;
-            width: 100%;
-            max-width: 150px; /* Ensures the big box doesn’t affect the layout */
-        }
-        @media (max-width: 600px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Kitchen Display</title>
+
+  <!-- DM Sans Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* GLOBAL STYLES */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      padding: 14px;
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(to right, #FFFFFF, #FFEBE7);
+      min-height: 100vh;
+    }
+
+    /* TOP BAR (LOGO + TIME) */
+    .profile-widget {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+
+    .mcdonald-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mcdonald-logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .mcdonald-text {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .time-display {
+      font-weight: 700;
+      font-size: 20px;
+      color: #000000;
+    }
+
+    /* MAIN CONTAINER */
+    .main-container {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    /* PREPARING SECTION */
+    .preparing-frame {
+      flex: 2 1 790px;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 32px;
+      background: #FFFFFF;
+      border-radius: 24px;
+    }
+
+    .preparing-title {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .preparing-orders {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .order-num {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      min-height: 64px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    /* READY SECTION */
+    .ready-frame {
+      flex: 1 1 300px;
+      min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 32px;
+      background: #FFFFFF;
+      border-radius: 24px;
+    }
+
+    .ready-title {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .ready-orders {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 12px;
+    }
+
+    .ready-big {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      background: #119717;
+      border-radius: 16px;
+      min-height: 128px;
+      font-size: 32px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .ready-small {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+      background: #119717;
+      border-radius: 16px;
+      min-height: 64px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+      }
+      .preparing-orders {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .ready-orders {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .preparing-orders {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .preparing-frame, .ready-frame {
+        padding: 24px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="header-box">
-            <div class="brand">
-                <img src="mc donald img.webp" alt="McDonald's Logo">
-                <span>McDonald's</span>
-            </div>
-            <div>08:00</div>
-        </div>
-        <div class="grid-container">
-            <div class="section preparing">
-                <h3>Preparing</h3>
-                <div class="orders">
-                    <div class="order">1</div>
-                    <div class="order">2</div>
-                    <div class="order">3</div>
-                    <div class="order">4</div>
-                    <div class="order">5</div>
-                    <div class="order">6</div>
-                    <div class="order">7</div>
-                    <div class="order">8</div>
-                    <div class="order">9</div>
-                    <div class="order">10</div>
-                    <div class="order">11</div>
-                    <div class="order">12</div>
-                </div>
-            </div>
-            <div class="section ready">
-                <h3>Ready</h3>
-                <div class="big-number">3885</div> <!-- Large Box Below "Ready" -->
-                <div class="orders">
-                    <div class="order">14</div>
-                    <div class="order">15</div>
-                    <div class="order">16</div>
-                    <div class="order">19</div>
-                    <div class="order">21</div>
-                    <div class="order">22</div>
-                    <div class="order">29</div>
-                    <div class="order">35</div>
-                    <div class="order">33</div>
-                    <div class="order">41</div>
-                    <div class="order">43</div>
-                </div>
-            </div>
-        </div>
+
+  <!-- TOP BAR -->
+  <div class="profile-widget">
+    <div class="mcdonald-section">
+      <img src="image.webp" 
+           alt="McDonald's Logo" class="mcdonald-logo">
+      <p class="mcdonald-text">McDonald's</p>
     </div>
-</body>
-</html>
+    
+    <p class="time-display">15:03</p>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <div class="main-container">
+    
+    <!-- PREPARING FRAME -->
+    <div class="preparing-frame">
+      <p class="preparing-title">Preparing</p>
+      <div class="preparing-orders">
+        <!-- Orders -->
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+        <div class="order-num">3885</div>
+      </div>
+    </div>
+
+    <!-- READY FRAME -->
+    <div class="ready-frame">
+      <p class="ready-title">Ready</p>
+      <div class="ready-orders">
+        <div class="ready-big">3885</div>
+        <div class="ready-small">3885</div>
+        <div class="ready-small">3885</div>
+        <div class="ready-small">3885</div>
+        <div class="ready-small">3885</div>
+        <div class="ready-small">3885</div>
+       

@@ -1,289 +1,588 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>McDonald's Order Status</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Kitchen Display</title>
 
-        body {
-            background: linear-gradient(to right, #f5f5f5, #ffe6e6);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+  <!-- DM Sans Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
 
-        .layout-container {
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+  <style>
+    /* GLOBAL STYLES */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(to right, #FFFFFF, #FFEBE7);
+      min-height: 100vh;
+      display: flex;
+    }
 
-        /* Top Header */
-        .top-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: none;
-            padding: 10px;
-        }
+    /* SIDEBAR (100% Figma Accurate) */
+    .sidebar {
+      width: 80px;
+      background: black;
+      padding: 16px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+    }
 
-        .title-section {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+    .sidebar-top,
+    .sidebar-middle,
+    .sidebar-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
 
-        .title-section img {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            object-fit: contain;
-        }
+    .sidebar-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      cursor: pointer;
+    }
 
-        .title-section h1 {
-            font-size: 18px;
-            font-weight: bold;
-            color: #000;
-        }
+    .sidebar-icon img {
+      width: 28px;
+      height: 28px;
+    }
 
-        .fullscreen-box {
-            background: white;
-            padding: 8px 15px;
-            border-radius: 10px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
+    .sidebar-bottom {
+      margin-bottom: 20px;
+    }
 
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #e0e0e0;
-            padding: 15px;
-            border-radius: 10px;
-        }
+    /* STICKY HEADER */
+    .header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: #FDECE7;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 100;
+    }
 
-        .header .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: bold;
-        }
+    .fullscreen-button {
+      padding: 8px 16px;
+      border: 1px solid #000;
+      border-radius: 16px;
+      cursor: pointer;
+      font-size: 14px;
+      background: white;
+    }
 
-        .header .time {
-            font-size: 16px;
-            font-weight: bold;
-        }
+    /* MAIN CONTENT */
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
 
-        /* Main Layout */
-        .main-content {
-            display: flex;
-            gap: 20px;
-        }
+    /* TOP BAR (LOGO + TIME) */
+    .profile-widget {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
 
-        /* Sidebar */
-        .sidebar-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    .mcdonald-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        .sidebar {
-            width: 60px;
-            background: #000;
-            padding: 10px;
-            border-radius: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-        }
+    .mcdonald-logo {
+      width: 50px;
+      height: 50px;
+    }
 
-        .sidebar img {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            object-fit: cover;
-        }
+    .mcdonald-text {
+      font-size: 20px;
+      font-weight: 700;
+    }
 
-        .sidebar-footer {
-            width: 60px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
-            border-radius: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-        }
+    .time-display {
+      font-weight: 700;
+      font-size: 20px;
+      color: #000000;
+    }
 
-        .sidebar-footer .profile img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+    /* MAIN CONTAINER */
+    .main-container {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
 
-        .notification-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 5px;
-        }
+    /* PREPARING SECTION */
+    .preparing-frame {
+      flex: 2 1 790px;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 32px;
+      background: #FFFFFF;
+      border-radius: 24px;
+    }
 
-        .notification-box img {
-            width: 30px;
-            height: 30px;
-            object-fit: contain;
-        }
+    .preparing-title {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+    }
 
-        /* Order Sections */
-        .content-sections {
-            flex: 1;
-            display: flex;
-            gap: 20px;
-        }
+    .preparing-orders {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
 
-        .section {
-            flex: 1;
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+    .order-num {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      min-height: 64px;
+      font-size: 20px;
+      font-weight: 700;
+    }
 
-        .section h2 {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: black;
-        }
+    /* READY SECTION */
+    .ready-frame {
+      flex: 1 1 300px;
+      min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 32px;
+      background: #FFFFFF;
+      border-radius: 24px;
+    }
 
-        /* Grid Layout for Orders */
-        .items-grid {
-            display: grid;
-            gap: 10px;
-            justify-content: center;
-        }
+    .ready-title {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+    }
 
-        .items-grid.preparing {
-            grid-template-columns: repeat(5, 1fr); /* 5 boxes per row */
-        }
+    .ready-orders {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 12px;
+    }
 
-        .items-grid.ready {
-            grid-template-columns: repeat(3, 1fr); /* 3 boxes per row */
-        }
+    .ready-big {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      background: #119717;
+      border-radius: 16px;
+      min-height: 128px;
+      font-size: 32px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
 
-        .items-grid.ready .item-card:first-child {
-            grid-column: span 3;
-            height: 80px;
-            font-size: 20px;
-            font-weight: bold;
-            background-color: green;
-            color: white;
-        }
+    .ready-small {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+      background: #119717;
+      border-radius: 16px;
+      min-height: 64px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
 
-        .item-card {
-            background: #d3d3d3;
-            border-radius: 5px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 14px;
-            font-weight: bold;
-            transition: transform 0.2s;
-        }
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+      }
+      .preparing-orders {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .ready-orders {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
 
-        .section.ready .items-grid .item-card {
-            background: green;
-            color: white;
-        }
-    </style>
+    @media (max-width: 480px) {
+      .preparing-orders {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .preparing-frame, .ready-frame {
+        padding: 24px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="layout-container">
-        <!-- Top Header -->
-        <div class="top-header">
-            <div class="title-section">
-                <img src="Logo.jpg" alt="Logo">
-                <h1>Order Status</h1>
-            </div>
-            <div class="fullscreen-box">FullScreen</div>
-        </div>
 
-        <!-- Header -->
-        <div class="header">
-            <div class="logo">McDonald's</div>
-            <div class="time"><strong>15:03</strong></div>
-        </div>
-
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Sidebar -->
-            <div class="sidebar-container">
-                <div class="sidebar">
-                    <img src="Customer Display (1).png" alt="Menu">
-                    <img src="Customer Display (2).png" alt="Menu">
-                    <img src="Customer Display.png" alt="Menu">
-                    <img src="Customer Display (2).png" alt="Menu">
-                    <img src="Customer Display (1).png" alt="Menu">
-                </div>
-                <div class="sidebar-footer">
-                    <div class="profile">
-                        <img src="mc donald img.webp" alt="Profile">
-                    </div>
-                    <div class="notification-box">
-                        <img src="bell.jpg" alt="Logo">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Order Sections -->
-            <div class="content-sections">
-                <!-- Preparing Section -->
-                <div class="section preparing">
-                    <h2>Preparing</h2>
-                    <div class="items-grid preparing">
-                        <!-- 25 Order Boxes (5 per row) -->
-                        <script>
-                            for (let i = 0; i < 25; i++) {
-                                document.write('<div class="item-card">3885</div>');
-                            }
-                        </script>
-                    </div>
-                </div>
-
-                <!-- Ready Section -->
-                <div class="section ready">
-                    <h2>Ready</h2>
-                    <div class="items-grid ready">
-                        <!-- 12 Order Boxes (3 per row) -->
-                        <script>
-                            for (let i = 0; i < 12; i++) {
-                                document.write('<div class="item-card">3885</div>');
-                            }
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- SIDEBAR (100% accurate to Figma) -->
+  <div class="sidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-icon"><img src="home-icon.png" alt="Home"></div>
     </div>
+    <div class="sidebar-middle">
+      <div class="sidebar-icon"><img src="stats-icon.png" alt="Stats"></div>
+      <div class="sidebar-icon"><img src="chat-icon.png" alt="Chat"></div>
+      <div class="sidebar-icon"><img src="settings-icon.png" alt="Settings"></div>
+    </div>
+    <div class="sidebar-bottom">
+      <div class="sidebar-icon"><img src="profile-icon.png" alt="Profile"></div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+    
+    <!-- STICKY HEADER -->
+    <div class="header">
+      <span>Order Status</span>
+      <button class="fullscreen-button">⛶ FullScreen</button>
+    </div>
+
+    <!-- TOP BAR -->
+    <div class="profile-widget">
+      <div class="mcdonald-section">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Mcdonalds_logo.svg/800px-Mcdonalds_logo.svg.png" 
+             alt="McDonald's Logo" class="mcdonald-logo">
+        <p class="mcdonald-text">McDonald's</p>
+      </div>
+      <p class="time-display">15:03</p>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+      <div class="preparing-frame"><p class="preparing-title">Preparing</p></div>
+      <div class="ready-frame"><p class="ready-title">Ready</p></div>
+    </div>
+
+  </div>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Kitchen Display</title>
+  
+    <!-- DM Sans Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+  
+    <style>
+      /* GLOBAL STYLES */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      body {
+        font-family: 'DM Sans', sans-serif;
+        background: linear-gradient(to right, #FFFFFF, #FFEBE7);
+        min-height: 100vh;
+        display: flex;
+      }
+  
+      /* SIDEBAR (100% Figma Accurate) */
+      .sidebar {
+        width: 80px;
+        background: black;
+        padding: 16px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 100vh;
+      }
+  
+      .sidebar-top,
+      .sidebar-middle,
+      .sidebar-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+  
+      .sidebar-icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        cursor: pointer;
+      }
+  
+      .sidebar-icon img {
+        width: 28px;
+        height: 28px;
+      }
+  
+      .sidebar-bottom {
+        margin-bottom: 20px;
+      }
+  
+      /* STICKY HEADER */
+      .header {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        background: #FDECE7;
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+        z-index: 100;
+      }
+  
+      .fullscreen-button {
+        padding: 8px 16px;
+        border: 1px solid #000;
+        border-radius: 16px;
+        cursor: pointer;
+        font-size: 14px;
+        background: white;
+      }
+  
+      /* MAIN CONTENT */
+      .content {
+        flex: 1;
+        padding: 20px;
+      }
+  
+      /* TOP BAR (LOGO + TIME) */
+      .profile-widget {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 24px;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 16px;
+        margin-bottom: 20px;
+      }
+  
+      .mcdonald-section {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+  
+      .mcdonald-logo {
+        width: 50px;
+        height: 50px;
+      }
+  
+      .mcdonald-text {
+        font-size: 20px;
+        font-weight: 700;
+      }
+  
+      .time-display {
+        font-weight: 700;
+        font-size: 20px;
+        color: #000000;
+      }
+  
+      /* MAIN CONTAINER */
+      .main-container {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+  
+      /* PREPARING SECTION */
+      .preparing-frame {
+        flex: 2 1 790px;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 32px;
+        background: #FFFFFF;
+        border-radius: 24px;
+      }
+  
+      .preparing-title {
+        font-size: 28px;
+        font-weight: 700;
+        text-align: center;
+      }
+  
+      .preparing-orders {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+      }
+  
+      .order-num {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+        min-height: 64px;
+        font-size: 20px;
+        font-weight: 700;
+      }
+  
+      /* READY SECTION */
+      .ready-frame {
+        flex: 1 1 300px;
+        min-width: 250px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 32px;
+        background: #FFFFFF;
+        border-radius: 24px;
+      }
+  
+      .ready-title {
+        font-size: 28px;
+        font-weight: 700;
+        text-align: center;
+      }
+  
+      .ready-orders {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 12px;
+      }
+  
+      .ready-big {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+        background: #119717;
+        border-radius: 16px;
+        min-height: 128px;
+        font-size: 32px;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+  
+      .ready-small {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 12px;
+        background: #119717;
+        border-radius: 16px;
+        min-height: 64px;
+        font-size: 20px;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+  
+      /* RESPONSIVE DESIGN */
+      @media (max-width: 768px) {
+        .main-container {
+          flex-direction: column;
+        }
+        .preparing-orders {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .ready-orders {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+  
+      @media (max-width: 480px) {
+        .preparing-orders {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .preparing-frame, .ready-frame {
+          padding: 24px;
+        }
+      }
+    </style>
+  </head>
+  
+  <body>
+  
+    <!-- SIDEBAR (100% accurate to Figma) -->
+    <div class="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-icon"><img src="home-icon.png" alt="Home"></div>
+      </div>
+      <div class="sidebar-middle">
+        <div class="sidebar-icon"><img src="stats-icon.png" alt="Stats"></div>
+        <div class="sidebar-icon"><img src="chat-icon.png" alt="Chat"></div>
+        <div class="sidebar-icon"><img src="settings-icon.png" alt="Settings"></div>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="sidebar-icon"><img src="profile-icon.png" alt="Profile"></div>
+      </div>
+    </div>
+  
+    <!-- MAIN CONTENT -->
+    <div class="content">
+      
+      <!-- STICKY HEADER -->
+      <div class="header">
+        <span>Order Status</span>
+        <button class="fullscreen-button">⛶ FullScreen</button>
+      </div>
+  
+      <!-- TOP BAR -->
+      <div class="profile-widget">
+        <div class="mcdonald-section">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Mcdonalds_logo.svg/800px-Mcdonalds_logo.svg.png" 
+               alt="McDonald's Logo" class="mcdonald-logo">
+          <p class="mcdonald-text">McDonald's</p>
+        </div>
+        <p class="time-display">15:03</p>
+      </div>
+  
+      <!-- MAIN CONTAINER -->
+      <div class="main-container">
+        <div class="preparing-frame"><p class="preparing-title">Preparing</p></div>
+        <div class="ready-frame"><p class="ready-title">Ready</p></div>
+      </div>
+  
+    </div>
+  
+  </body>
+  </html>
+  
 </body>
 </html>
