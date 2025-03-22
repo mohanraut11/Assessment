@@ -1,86 +1,88 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Items - Popular Items</title>
+    <title>Popular Items</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #d9d9d9; /* Changed background to grey */
-            text-align: center;
-            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #fdfbfb;
+            font-family: 'Poppins', sans-serif;
         }
-        .container {
-            background: #fcfbfa;
+        .card {
+            width: 400px;
             padding: 20px;
             border-radius: 15px;
-            box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.2); /* Left side shadow */
-            max-width: 600px;
-            margin: auto;
-            text-align: left;
+            background: #e6e5e5;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        h2 {
-            font-size: 22px;
+        .card h2 {
+            margin-top: 0;
+            font-size: 24px;
             font-weight: bold;
-            margin-bottom: 15px;
         }
         .grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 20px;
+            margin-top: 20px;
         }
-        .grid-item {
-            background: white; /* Boxes now fully white */
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .grid-item h3 {
-            font-size: 16px;
+        .item {
+            padding: 20px;
+            border-radius: 15px;
+            background: #fcf9f7;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             font-weight: bold;
-            margin: 0 0 10px;
         }
-        .grid-item p {
-            color: gray;
-            font-size: 14px;
-            margin: 0;
+        .order {
+            margin-top: 10px;
+            color: rgb(1, 1, 1);
+            font-weight: normal;
         }
-        .grid-item span {
+        .order span {
             font-weight: bold;
-            color: black;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Popular Items</h2>
-        <div class="grid">
-            <div class="grid-item">
-                <h3>Double Chicken Burger + French Fries</h3>
-                <p>Order: <span>88</span></p>
-            </div>
-            <div class="grid-item">
-                <h3>Mexican Burger</h3>
-                <p>Order: <span>76</span></p>
-            </div>
-            <div class="grid-item">
-                <h3>Double Cheese</h3>
-                <p>Order: <span>89</span></p>
-            </div>
-            <div class="grid-item">
-                <h3>Double Spicy Bean Burger</h3>
-                <p>Order: <span>49</span></p>
-            </div>
-            <div class="grid-item">
-                <h3>Potato Gems</h3>
-                <p>Order: <span>38</span></p>
-            </div>
-            <div class="grid-item">
-                <h3>Beer</h3>
-                <p>Order: <span>65</span></p>
-            </div>
+<div class="card">
+    <h2>Popular Items</h2>
+    <div class="grid">
+        <div class="item">
+            Briyani + Fries
+            <div class="order">Order: <span>216</span></div>
+        </div>
+        <div class="item">
+            Chinese Soup + Beef
+            <div class="order">Order: <span>334</span></div>
+        </div>
+        <div class="item">
+            Combo Pizza + Chilled Alvaro
+            <div class="order">Order: <span>243</span></div>
+        </div>
+        <div class="item">
+            Panner Fried Rice + Extra Chicken
+            <div class="order">Order: <span>279</span></div>
+        </div>
+        <div class="item">
+            Nasi Goreng + Okro Stew
+            <div class="order">Order: <span>308</span></div>
+        </div>
+        <div class="item">
+            Fruit Salad
+            <div class="order">Order: <span>322</span></div>
         </div>
     </div>
+</div>
 </body>
 </html>

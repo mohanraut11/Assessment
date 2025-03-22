@@ -1,228 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Kitchen Display</title>
-
-  <!-- DM Sans Font -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* GLOBAL STYLES */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    body {
-      padding: 14px;
-      font-family: 'DM Sans', sans-serif;
-      background: linear-gradient(to right, #FFFFFF, #FFEBE7);
-      min-height: 100vh;
-    }
-
-    /* TOP BAR (LOGO + TIME) */
-    .profile-widget {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 24px;
-      background: rgba(0, 0, 0, 0.05);
-      border-radius: 16px;
-      margin-bottom: 20px;
-    }
-
-    .mcdonald-section {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .mcdonald-logo {
-      width: 50px;
-      height: 50px;
-    }
-
-    .mcdonald-text {
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .time-display {
-      font-weight: 700;
-      font-size: 20px;
-      color: #000000;
-    }
-
-    /* MAIN CONTAINER */
-    .main-container {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      width: 100%;
-    }
-
-    /* PREPARING SECTION */
-    .preparing-frame {
-      flex: 2 1 790px;
-      min-width: 300px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      padding: 32px;
-      background: #FFFFFF;
-      border-radius: 24px;
-    }
-
-    .preparing-title {
-      font-size: 28px;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .preparing-orders {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-    }
-
-    .order-num {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 12px;
-      background: rgba(0, 0, 0, 0.1);
-      border-radius: 16px;
-      min-height: 64px;
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    /* READY SECTION */
-    .ready-frame {
-      flex: 1 1 300px;
-      min-width: 250px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      padding: 32px;
-      background: #FFFFFF;
-      border-radius: 24px;
-    }
-
-    .ready-title {
-      font-size: 28px;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .ready-orders {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 12px;
-    }
-
-    .ready-big {
-      grid-column: 1 / -1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 24px;
-      background: #119717;
-      border-radius: 16px;
-      min-height: 128px;
-      font-size: 32px;
-      font-weight: 700;
-      color: #FFFFFF;
-    }
-
-    .ready-small {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 12px;
-      background: #119717;
-      border-radius: 16px;
-      min-height: 64px;
-      font-size: 20px;
-      font-weight: 700;
-      color: #FFFFFF;
-    }
-
-    /* RESPONSIVE DESIGN */
-    @media (max-width: 768px) {
-      .main-container {
-        flex-direction: column;
-      }
-      .preparing-orders {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      .ready-orders {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .preparing-orders {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .preparing-frame, .ready-frame {
-        padding: 24px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- TOP BAR -->
-  <div class="profile-widget">
-    <div class="mcdonald-section">
-      <img src="image.webp" 
-           alt="McDonald's Logo" class="mcdonald-logo">
-      <p class="mcdonald-text">McDonald's</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>WSP FULL DISPLAY</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="wsp.css" />
+  </head>
+  <body>
+    <!-- McDonald's Info Card -->
+    <div class="brand-card">
+      <div class="brand-logo">
+        <img src="brand.png" alt="Brand Logo" />
+        <span>McDonald's</span>
+      </div>
+      <div class="time">15:03</div>
     </div>
-    
-    <p class="time-display">15:03</p>
-  </div>
 
-  <!-- MAIN CONTAINER -->
-  <div class="main-container">
-    
-    <!-- PREPARING FRAME -->
-    <div class="preparing-frame">
-      <p class="preparing-title">Preparing</p>
-      <div class="preparing-orders">
-        <!-- Orders -->
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
-        <div class="order-num">3885</div>
+    <!-- Main Content -->
+    <div class="grid-container">
+      <!-- Preparing Section -->
+      <div class="section section-preparing">
+        <h2>Preparing</h2>
+        <div class="box-item">
+          <div class="items">
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Ready Section -->
+      <div class="section section-ready">
+        <h2>Ready</h2>
+        <div class="box-item">
+          <div class="items">
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+            <div class="item">3885</div>
+
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- READY FRAME -->
-    <div class="ready-frame">
-      <p class="ready-title">Ready</p>
-      <div class="ready-orders">
-        <div class="ready-big">3885</div>
-        <div class="ready-small">3885</div>
-        <div class="ready-small">3885</div>
-        <div class="ready-small">3885</div>
-        <div class="ready-small">3885</div>
-        <div class="ready-small">3885</div>
-       
+  </body>
+</html>

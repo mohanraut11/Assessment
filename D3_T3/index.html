@@ -1,80 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seating Layout</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            text-align: center;
-            padding: 30px;
-        }
-        h2 {
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .flex-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
-            max-width: 700px;
-            margin: auto;
-        }
-        .seat {
-            width: 60px;
-            height: 50px;
-            background: white;
-            border-radius: 8px;
-            border: 2px solid lightgray;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        /* Highlight occupied seats */
-        .occupied {
-            border-left: 4px solid red; /* Highlight left side in red */
-        }
-        /* Highlight available seats */
-        .available {
-            border-left: 4px solid green; /* Highlight left side in green */
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flex Layout Boxes</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(67.75deg, #FFFFFF 19.18%, #FFEBE7 75.31%);
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      width: calc((93.8px * 9) + (16px * 8));
+      margin: 0 auto;
+    }
+
+    .box-item {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+      width: 93.8px;
+      min-width: 90px;
+      height: 56px;
+      background: rgba(255, 255, 255, 0.6);
+      border-left: 4px solid #FF5F5F;
+      backdrop-filter: blur(2px);
+      border-radius: 16px;
+      flex: none;
+      order: 0;
+      flex-grow: 1;
+      font-family: 'DM Sans';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      text-align: center;
+      letter-spacing: -0.01em;
+      color: #000000;
+    }
+
+    .green-shadow {
+      border-left: 4px solid #00A040;
+    }
+
+    .red-shadow {
+      border-left: 4px solid #FF5F5F;
+    }
+
+    .strip-border {
+      border-left: 4px dashed #FF5F5F;
+    }
+
+    .seat {
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .paid {
+      border-left: 4px solid #00A040;
+    }
+  </style>
 </head>
 <body>
-    <h2>Tables Available</h2>
-    <p>Green are vacant while red are occupied.</p>
-    
-    <div class="flex-container">
-        <div class="seat occupied">A1</div>
-        <div class="seat available">A2</div>
-        <div class="seat occupied">A3</div>
-        <div class="seat available">A4</div>
-        <div class="seat available">A5</div>
-        <div class="seat occupied">A6</div>
-        <div class="seat occupied">B1</div>
-        <div class="seat available">B2</div>
-        <div class="seat occupied">B3</div>
-        <div class="seat">B4</div>
-        <div class="seat available">B5</div>
-        <div class="seat occupied">B6</div>
-        <div class="seat">C1</div>
-        <div class="seat available">C2</div>
-        <div class="seat occupied">C3</div>
-        <div class="seat">C4</div>
-        <div class="seat available">C5</div>
-        <div class="seat occupied">C6</div>
-        <div class="seat">C7</div>
-        <div class="seat occupied">D1</div>
-        <div class="seat available">D2</div>
-    </div>
+  <div class="container">
+    <!-- Row 1 -->
+    <div class="box-item red-shadow">A1</div>
+    <div class="box-item red-shadow">A2</div>
+    <div class="box-item red-shadow">A3</div>
+    <div class="box-item red-shadow">A4</div>
+    <div class="box-item green-shadow">A5</div>
+    <div class="box-item green-shadow">A6</div>
+    <div class="box-item green-shadow">B1</div>
+    <div class="box-item seat paid">B2</div>
+    <div class="box-item green-shadow">B3</div>
+
+    <!-- Row 2 -->
+    <div class="box-item green-shadow">B5</div>
+    <div class="box-item green-shadow">B6</div>
+    <div class="box-item green-shadow">C1</div>
+    <div class="box-item green-shadow">C2</div>
+    <div class="box-item green-shadow">C3</div>
+    <div class="box-item seat paid">C4</div>
+    <div class="box-item green-shadow">C5</div>
+    <div class="box-item green-shadow">C6</div>
+    <div class="box-item green-shadow">C7</div>
+
+    <!-- Row 3 -->
+    <div class="box-item green-shadow">D2</div>
+    <div class="box-item green-shadow">E1</div>
+    <div class="box-item green-shadow">E2</div>
+    <div class="box-item seat paid">E3</div>
+    <div class="box-item red-shadow">E4</div>
+    <div class="box-item red-shadow">E5</div>
+    <div class="box-item red-shadow">E6</div>
+    <div class="box-item red-shadow">E7</div>
+    <div class="box-item red-shadow">E8</div>
+
+    <!-- Row 4 -->
+    <div class="box-item red-shadow">F2</div>
+    <div class="box-item green-shadow">F3</div>
+    <div class="box-item green-shadow">F4</div>
+    <div class="box-item red-shadow">C5</div>
+    <div class="box-item green-shadow">D1</div>
+    <div class="box-item red-shadow">D1</div>
+    <div class="box-item green-shadow">D1</div>
+    <div class="box-item green-shadow">D1</div>
+    <div class="box-item green-shadow">D1</div>
+
+    <!-- Row 5 -->
+    <div class="box-item green-shadow">C2</div>
+    <div class="box-item green-shadow">C3</div>
+    <div class="box-item green-shadow">C4</div>
+    <div class="box-item green-shadow">C5</div>
+    <div class="box-item green-shadow">D1</div>
+    <div class="box-item green-shadow">D1</div>
+    <div class="box-item green-shadow">D1</div>
+    <div class="box-item green-shadow">D1</div>
+    <div class="box-item green-shadow">D1</div>
+  </div>
 </body>
 </html>

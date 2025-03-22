@@ -1,304 +1,69 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
-
+    <title>Flex Layout Boxes</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<style>* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'DM Sans', sans-serif;
-}
-
-.gcontainer{
-   
-    background: linear-gradient(to bottom, #EBEBEB, #F9E4E0);
-    display: flex;
-    
-}
-.gcard{
-    position: relative;
-    width: 480px;
-    height: 630px;
-    border-radius: 32px;
-    background-image: url("./Image\ BG.png");
-    background-size: cover;
-    background-position: center;
-    padding-top: 32px;
-    padding-left: 24px;
-    margin: 10px 0 10px 10px;
-}
-.goverlay{
-    position: absolute;
-    background: linear-gradient(to bottom, #FF5634 70%, #000000 100%); /* Extends the orange before fading to black */
-    border-radius: 32px;
-    inset: 0;
-    opacity: 0.5; /* Keeps the transparency effect */
-}
-.glogo{
-    width: 164.05px;
-    height: 38.97px;
-    position: relative;
-}
-.gtext-container{
-    position:absolute;
-    bottom: 40px;
-    color: white;
-    width: 400px;
-    height: 160px;
-
-}
-.gtitle{
-    font-weight: 700;
-    font-size: 64px;
-    line-height: 56px;
-    margin-bottom: 24px;
-    letter-spacing: -0.03em;
-}
-.gdescription{
-    font-size: 16px;
-    line-height: 20px;
-}
-
-
-/* Form (Middle) */
-
-.formContainer{
-flex-grow: 1;   
-display: flex;
-justify-content: center;
-align-items: center; 
-}
-.form {
-    width: 360px;
-    height: 388px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    width: 360px;
-    gap: 16px;
-  
-  }
-  
-  form img {
-    height: 24px;
-  }
-  
-  .welcome-message {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-  }
-  
-  .welcome-message h2 {
-    font-weight: 700;
-    line-height: 40px;
-    letter-spacing: -3%;
-  }
-  
-  .welcome-message p {
-    height: 20px;
-    font-size: 16px;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 0.6);
-    line-height: 20px;
-    letter-spacing: -1%;
-  }
-  
-  .form_bottom {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding-bottom: 4px;
-    gap: 4px;
-    border-bottom: 1px;
-  }
-  
-  .email-field,
-  .password-field {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 2px;
-  
-  }
-  
-  .email-field label,
-  .password-field label {
-    display: flex;
-    width: 100%;
-    color: #00000099;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 16px;
-    letter-spacing: 0;
-    padding-left: 16px;
-    padding-right: 16px;
-    gap: 8px;
-  }
-  
-  .email-field input,
-  .password-field input {
-    width: 100%;
-    height: 48px;
-    background-color: #FFFFFF99;
-    color: #000000;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 24px;
-    border-color: #FFFFFF99;
-    border: 1px;
-    gap: 1px;
-  
-    font-size: 16px;
-    font-weight: 400px;
-    line-height: 20px;
-    letter-spacing: -1%;
-  
-  }
-  
-  .password-field_input {
-    display: flex;
-    align-items: center;
-  }
-  
-  .password-field_input span {
-    display: flex;
-    align-items: center;
-    width: 24px;
-    height: 24px;
-    margin-left: -40px;
-  }
-  
-  .password-field_input img {
-    height: 14px;
-    width: auto;
-  }
-  
-  .checkbox_login-link {
-    display: flex;
-    align-items: center;
-    gap: 33px;
-  }
-  
-  .remember-me {
-    display: flex;
-    width: 208px;
-    align-items: center;
-    gap: 2px;
-  }
-  
-  .remember-me input {
-    width: 18px;
-    height: 18px;
-    background-color: #0000001A;
-    border-radius: 8px;
-  }
-  
-  .remember-me label {
-    color: #242424;
-    font-weight: 400;
-    font-style: 16px;
-    line-height: 20px;
-    letter-spacing: -1%;
-  }
-  
-  .checkbox_login-link .login {
-    display: flex;
-    align-items: center;
-    height: 48px;
-    gap: 8px; 
-  }
-  
-  .login a {
-    color: #242424;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-    letter-spacing: -1px;
-    text-decoration: underline;
-    text-decoration-style: solid;
-    text-decoration-thickness: 0%;
-  }
-  
-  form button {
-    width: 100%;
-    height: 48px;
-    background-color: #000000;
-    color: #FFFFFF;
-    border-radius: 32px;
-    padding-right: 32px;
-    padding-left: 32px;
-  
-    size: 16px;
-    font-weight: 700;
-    letter-spacing: -1%;
-  }</style>
-
 <body>
-    <div class="gcontainer ">
-    <div class="gcard">
-        <!-- Overlay -->
-        <div class="goverlay"></div>
-    
-        <!-- Image -->
-        <img src="original (1).png" alt="" class="glogo">
-        <div class="gtext-container">
-            <p class="gtitle">Service Panel</p>
-            <p class="gdescription">
-                Streamline your restaurant operations with BMS. Manage reservations, orders, inventory, and staff effortlessly, and focus on delivering exceptional dining experiences.
-            </p>
-        </div>
+    <div class="container">
+        <!-- Row 1 -->
+        <div class="box-item red-shadow">A1</div>
+        <div class="box-item red-shadow">A2</div>
+        <div class="box-item red-shadow">A3</div>
+        <div class="box-item red-shadow">A4</div>
+        <div class="box-item green-shadow">A5</div>
+        <div class="box-item green-shadow">A6</div>
+        <div class="box-item green-shadow">B1</div>
+        <div class="box-item seat paid">B2</div>
+        <div class="box-item green-shadow">B3</div>
+
+        <!-- Row 2 -->
+        <div class="box-item green-shadow">B5</div>
+        <div class="box-item green-shadow">B6</div>
+        <div class="box-item green-shadow">C1</div>
+        <div class="box-item green-shadow">C2</div>
+        <div class="box-item green-shadow">C3</div>
+        <div class="box-item seat paid">C4</div>
+        <div class="box-item green-shadow">C5</div>
+        <div class="box-item green-shadow">C6</div>
+        <div class="box-item green-shadow">C7</div>
+
+        <!-- Row 3 -->
+        <div class="box-item green-shadow">D2</div>
+        <div class="box-item green-shadow">E1</div>
+        <div class="box-item green-shadow">E2</div>
+        <div class="box-item seat paid">E3</div>
+        <div class="box-item red-shadow">E4</div>
+        <div class="box-item red-shadow">E5</div>
+        <div class="box-item red-shadow">E6</div>
+        <div class="box-item red-shadow">E7</div>
+        <div class="box-item red-shadow">E8</div>
+
+        <!-- Row 4 -->
+        <div class="box-item red-shadow">F2</div>
+        <div class="box-item green-shadow">F3</div>
+        <div class="box-item green-shadow">F4</div>
+        <div class="box-item red-shadow">C5</div>
+        <div class="box-item green-shadow">D1</div>
+        <div class="box-item red-shadow">D1</div>
+        <div class="box-item green-shadow">D1</div>
+        <div class="box-item green-shadow">D1</div>
+        <div class="box-item green-shadow">D1</div>
+
+        <!-- Row 5 -->
+        <div class="box-item green-shadow">C2</div>
+        <div class="box-item green-shadow">C3</div>
+        <div class="box-item green-shadow">C4</div>
+        <div class="box-item green-shadow">C5</div>
+        <div class="box-item green-shadow">D1</div>
+        <div class="box-item green-shadow">D1</div>
+        <div class="box-item green-shadow">D1</div>
+        <div class="box-item green-shadow">D1</div>
+        <div class="box-item green-shadow">D1</div>
     </div>
-
-    <div class="formContainer">
-        <div class="form">
-            <form action="">
-              <div class="welcome-message"> <!--  Welcome Message -->
-                <h2>Welcome Back</h2>
-                <p>Manage, streamline, and thrive effortlessly.</p>
-              </div>
-              <div class="form_bottom"> 
-                <div class="email-field">
-                  <label for="email">Email</label>
-                  <input type="email" id="email" name="email" placeholder="samsmith@gmail.com">
-                </div>
-                <div class="password-field">
-                  <label for="password">Password</label>
-                  <div class="password-field_input">
-                    <input type="password" id="password" name="password" placeholder="••••••••">
-                    <span>
-                      <img src="./Eye icon.png" alt="show password">
-                    </span>
-                  </div>
-                </div>
-      
-                <div class="checkbox_login-link"> <!--  Remember me checkbox and login option -->
-                  <div class="remember-me">
-                    <input type="checkbox" class="h-5 w-5 cursor-pointer border appearance-none rounded-md bg-black-10 border-[#E6E6E6] checked:bg-[#00A82D] checked:border-[#00A82D] focus:outline-none focus:ring-2 focus:ring-[#00A82D]/20 disabled:cursor-not-allowed disabled:opacity-50">
-                    <label for="remember-me">Remember me</label>
-                  </div>
-                  <div class="login">
-                    <a href="#">Login with Code</a>
-                  </div>
-                </div>
-                <button type="submit"> Sign In</button>
-              </div>
-            </form>
-          </div>
-
-    </div>
-
-    
-</div>
-    
 </body>
 </html>
