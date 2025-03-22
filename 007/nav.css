@@ -1,0 +1,266 @@
+/* Base Font Size */
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient(67.75deg, #ffffff 19.18%, #ffebe7 75.31%);
+  font-family: "DM Sans", sans-serif;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
+}
+
+/* Layout Container */
+.layout-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f3f4f6;
+}
+
+/* Top Header */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.status-icon img {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+}
+
+.title-section h1 {
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: -0.03em;
+}
+
+.fullscreen-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fullscreen-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.fullscreen-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 3;
+  stroke: black;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  margin: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -1%;
+}
+
+.logo svg {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+}
+
+.time {
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -3%;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  flex: 1;
+  gap: 16px;
+  padding: 16px;
+}
+
+/* Sidebar Container */
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.icon.active {
+  background: #ff5634;
+}
+
+.sidebar-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+}
+
+.profile img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.bell svg {
+  width: 48px;
+  height: 48px;
+}
+
+/* Content Sections */
+.content-sections {
+  display: flex;
+  flex: 1;
+  gap: 16px;
+}
+
+.section {
+  flex: 1;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -3%;
+  margin-bottom: 24px;
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 8px;
+}
+
+.item-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 64px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 24px;
+  color: #000000;
+}
+
+.section.ready .item-card {
+  background: #119717;
+  color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .sidebar-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .sidebar-footer {
+    display: none;
+  }
+
+  .content-sections {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-header h1 {
+    font-size: 24px;
+  }
+
+  .time {
+    font-size: 24px;
+  }
+
+  .item-card {
+    height: 48px;
+    font-size: 18px;
+  }
+}
